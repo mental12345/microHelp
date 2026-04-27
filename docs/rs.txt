@@ -1,0 +1,96 @@
+╭─ Rust Reference ─╮
+
+  VARIABLES
+  ──────────
+  let x = 10;          // immutable
+  let mut y = 20;      // mutable
+  const MAX: u32 = 100;
+  static NAME: &str = "app";
+
+  FUNCTIONS
+  ──────────
+  fn name(x: i32) -> i32 {
+      x * 2  // implicit return
+  }
+
+  fn with_lifetime<'a>(s: &'a str) -> &'a str {
+      s
+  }
+
+  STRUCTS
+  ──────────
+  struct Point {
+      x: f64,
+      y: f64,
+  }
+
+  impl Point {
+      fn new(x: f64, y: f64) -> Self {
+          Self { x, y }
+      }
+
+      fn distance(&self) -> f64 {
+          (self.x.powi(2) + self.y.powi(2)).sqrt()
+      }
+  }
+
+  ENUMS
+  ──────────
+  enum Option<T> {
+      Some(T),
+      None,
+  }
+
+  enum Result<T, E> {
+      Ok(T),
+      Err(E),
+  }
+
+  PATTERN MATCHING
+  ──────────
+  match value {
+      1 => println!("one"),
+      2 | 3 => println!("two or three"),
+      _ => println!("other"),
+  }
+
+  if let Some(x) = option {
+      use(x);
+  }
+
+  OWNERSHIP & BORROWING
+  ──────────
+  String     // owned
+  &str       // borrowed (immutable)
+  &mut str   // borrowed (mutable)
+
+  // Move
+  let s2 = s1;  // s1 is moved
+
+  // Clone
+  let s2 = s1.clone();
+
+  ERROR HANDLING
+  ──────────
+  fn read() -> Result<String, io::Error> {
+      let content = fs::read_to_string("file")?;
+      Ok(content)
+  }
+
+  TRAITS
+  ──────────
+  trait Printable {
+      fn print(&self);
+  }
+
+  impl Printable for Point {
+      fn print(&self) {
+          println!("{}, {}", self.x, self.y);
+      }
+  }
+
+  COMMON TRAITS
+  ──────────
+  Clone, Copy, Debug
+  Default, PartialEq, Eq
+  Hash, Display, From, Into

@@ -1,0 +1,94 @@
+╭─ C Language Reference ─╮
+
+  INCLUDES
+  ──────────
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+  #include "myheader.h"
+
+  MAIN FUNCTION
+  ──────────
+  int main(int argc, char *argv[]) {
+      return 0;
+  }
+
+  VARIABLES
+  ──────────
+  int x = 10;
+  float f = 3.14f;
+  double d = 3.14159;
+  char c = 'A';
+  char str[] = "hello";
+
+  POINTERS
+  ──────────
+  int *ptr = &var;    // address of
+  *ptr = 10;          // dereference
+  ptr++;              // pointer arithmetic
+
+  int arr[10];
+  int *p = arr;       // array to pointer
+
+  MEMORY
+  ──────────
+  // Allocation
+  int *arr = malloc(n * sizeof(int));
+  int *arr = calloc(n, sizeof(int));
+  arr = realloc(arr, new_size);
+
+  // Always free!
+  free(arr);
+
+  STRUCTS
+  ──────────
+  struct Point {
+      int x;
+      int y;
+  };
+
+  struct Point p = {10, 20};
+  p.x = 30;
+
+  struct Point *pp = &p;
+  pp->x = 40;
+
+  typedef struct {
+      int x, y;
+  } Point;
+
+  FUNCTIONS
+  ──────────
+  int add(int a, int b) {
+      return a + b;
+  }
+
+  // Pass by pointer
+  void swap(int *a, int *b) {
+      int temp = *a;
+      *a = *b;
+      *b = temp;
+  }
+
+  CONTROL FLOW
+  ──────────
+  if (cond) { } else { }
+
+  for (int i = 0; i < n; i++) { }
+
+  while (cond) { }
+
+  do { } while (cond);
+
+  switch (val) {
+      case 1: break;
+      default: break;
+  }
+
+  COMMON FUNCTIONS
+  ──────────
+  printf, scanf, sprintf
+  fopen, fclose, fread, fwrite
+  strlen, strcpy, strcmp, strcat
+  memcpy, memset, memmove
+  qsort, bsearch

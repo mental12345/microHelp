@@ -1,0 +1,88 @@
+╭─ TypeScript Reference ─╮
+
+  BASIC TYPES
+  ──────────
+  let x: number = 10;
+  let s: string = "hello";
+  let b: boolean = true;
+  let arr: number[] = [1, 2, 3];
+  let tuple: [string, number];
+
+  INTERFACES
+  ──────────
+  interface User {
+      name: string;
+      age?: number;      // optional
+      readonly id: number;
+  }
+
+  interface Printable {
+      print(): void;
+  }
+
+  TYPE ALIASES
+  ──────────
+  type ID = string | number;
+  type Point = { x: number; y: number };
+  type Handler = (e: Event) => void;
+
+  FUNCTIONS
+  ──────────
+  function fn(x: number): string {
+      return x.toString();
+  }
+
+  const fn = (x: number): string => {
+      return x.toString();
+  };
+
+  // Optional & default params
+  function greet(name: string, age?: number) {}
+  function greet(name = "World") {}
+
+  GENERICS
+  ──────────
+  function identity<T>(x: T): T {
+      return x;
+  }
+
+  interface Box<T> {
+      value: T;
+  }
+
+  class Container<T> {
+      constructor(public value: T) {}
+  }
+
+  CLASSES
+  ──────────
+  class Animal {
+      private name: string;
+      protected age: number;
+      public readonly id: number;
+
+      constructor(name: string) {
+          this.name = name;
+      }
+  }
+
+  TYPE UTILITIES
+  ──────────
+  Partial<T>     - all optional
+  Required<T>    - all required
+  Pick<T, K>     - subset
+  Omit<T, K>     - exclude keys
+  Record<K, V>   - key-value map
+  ReturnType<F>  - function return
+  Parameters<F>  - function params
+
+  UNION & INTERSECTION
+  ──────────
+  type Result = Success | Error;
+  type Combined = TypeA & TypeB;
+
+  TYPE GUARDS
+  ──────────
+  if (typeof x === "string") {}
+  if ("property" in obj) {}
+  if (x instanceof Class) {}

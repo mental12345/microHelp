@@ -1,0 +1,80 @@
+╭─ JavaScript Reference ─╮
+
+  VARIABLES
+  ──────────
+  const x = 10;    // immutable binding
+  let y = 20;      // mutable binding
+  // avoid var
+
+  FUNCTIONS
+  ──────────
+  function name(params) {
+      return value;
+  }
+
+  const fn = (x) => x * 2;
+  const fn = (x) => {
+      return x * 2;
+  };
+
+  OBJECTS
+  ──────────
+  const obj = {
+      key: value,
+      method() { return this.key; }
+  };
+
+  obj.key
+  obj["key"]
+  obj?.optional?.chain
+
+  // Destructuring
+  const { a, b } = obj;
+
+  ARRAYS
+  ──────────
+  const arr = [1, 2, 3];
+
+  arr.map(x => x * 2)
+  arr.filter(x => x > 1)
+  arr.reduce((a, b) => a + b, 0)
+  arr.find(x => x === 2)
+  arr.forEach(x => console.log(x))
+
+  // Spread
+  const copy = [...arr];
+  const merged = [...arr1, ...arr2];
+
+  ASYNC/AWAIT
+  ──────────
+  async function fetchData() {
+      const res = await fetch(url);
+      return res.json();
+  }
+
+  // Promise
+  fetch(url)
+      .then(res => res.json())
+      .catch(err => handle(err));
+
+  CLASSES
+  ──────────
+  class Name extends Base {
+      constructor(value) {
+          super();
+          this.value = value;
+      }
+
+      method() {
+          return this.value;
+      }
+  }
+
+  MODULES
+  ──────────
+  import x from 'module';
+  import { a, b } from 'module';
+  import * as mod from 'module';
+
+  export default x;
+  export { a, b };

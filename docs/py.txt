@@ -1,0 +1,83 @@
+╭─ Python Reference ─╮
+
+  IMPORTS
+  ──────────
+  import os
+  from sys import argv
+  from typing import List, Dict
+
+  FUNCTIONS
+  ──────────
+  def name(params):
+      """Docstring"""
+      return value
+
+  def typed(x: int) -> str:
+      return str(x)
+
+  # Lambda
+  fn = lambda x: x * 2
+
+  CLASSES
+  ──────────
+  class Name:
+      def __init__(self, value):
+          self.value = value
+
+      def method(self):
+          return self.value
+
+  @dataclass
+  class Point:
+      x: int
+      y: int
+
+  CONTROL FLOW
+  ──────────
+  if condition:
+      pass
+  elif other:
+      pass
+  else:
+      pass
+
+  for i in range(n):
+      pass
+
+  for item in iterable:
+      pass
+
+  while condition:
+      pass
+
+  COMPREHENSIONS
+  ──────────
+  [x for x in list if cond]
+  {k: v for k, v in items}
+  {x for x in items}
+  (x for x in items)  # generator
+
+  EXCEPTIONS
+  ──────────
+  try:
+      risky()
+  except ValueError as e:
+      handle(e)
+  finally:
+      cleanup()
+
+  WITH STATEMENT
+  ──────────
+  with open("file") as f:
+      data = f.read()
+
+  COMMON MODULES
+  ──────────
+  os, sys      - system
+  pathlib      - paths
+  json         - JSON
+  re           - regex
+  datetime     - dates
+  collections  - data structures
+  typing       - type hints
+  asyncio      - async/await

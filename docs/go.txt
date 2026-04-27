@@ -1,0 +1,79 @@
+╭─ Go Language Reference ─╮
+
+  PACKAGES
+  ──────────
+  import "fmt"
+  import "os"
+  import (
+      "strings"
+      "path/filepath"
+  )
+
+  FUNCTIONS
+  ──────────
+  func name(params) returnType {
+      // body
+  }
+
+  func (r *Receiver) Method() {
+      // method with receiver
+  }
+
+  VARIABLES
+  ──────────
+  var x int = 10
+  x := 10  // short declaration
+  const PI = 3.14159
+
+  CONTROL FLOW
+  ──────────
+  if condition { }
+  if err != nil { return err }
+
+  for i := 0; i < n; i++ { }
+  for _, v := range slice { }
+
+  switch value {
+  case "a": // ...
+  default:  // ...
+  }
+
+  TYPES
+  ──────────
+  type Name struct {
+      Field string
+      Count int
+  }
+
+  type Reader interface {
+      Read(p []byte) (n int, err error)
+  }
+
+  SLICES & MAPS
+  ──────────
+  slice := []int{1, 2, 3}
+  slice = append(slice, 4)
+
+  m := map[string]int{}
+  m["key"] = value
+
+  ERROR HANDLING
+  ──────────
+  if err != nil {
+      return fmt.Errorf("failed: %w", err)
+  }
+
+  GOROUTINES
+  ──────────
+  go func() { ... }()
+  ch := make(chan int)
+  
+  COMMON PACKAGES
+  ──────────
+  fmt      - formatting I/O
+  os       - operating system
+  io       - I/O primitives
+  net/http - HTTP client/server
+  encoding/json - JSON
+  context  - cancellation
+  sync     - synchronization

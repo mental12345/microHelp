@@ -1,0 +1,13 @@
+[{
+    "Name": "microHelp",
+    "Description": "Custom DOcs and Man help for users.",
+    "Tags": ["micro", "man", "documentation"],
+    "Versions": [
+      {
+        "Version": "0.0.1",
+        "Require": {
+          "micro": ">=2.0.0"
+        }
+      }
+    ]
+  }]

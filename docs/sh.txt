@@ -1,0 +1,98 @@
+╭─ Shell Script Reference ─╮
+
+  SHEBANG
+  ──────────
+  #!/bin/bash
+  #!/usr/bin/env bash
+
+  VARIABLES
+  ──────────
+  VAR="value"
+  echo "$VAR"
+  echo "${VAR}_suffix"
+
+  # Read-only
+  readonly CONST="value"
+
+  # Arrays
+  arr=(one two three)
+  echo "${arr[0]}"
+  echo "${arr[@]}"  # all elements
+  echo "${#arr[@]}" # length
+
+  QUOTING
+  ──────────
+  "double"  # variables expand
+  'single'  # literal string
+  $'escape' # escape sequences
+
+  CONDITIONS
+  ──────────
+  if [[ condition ]]; then
+      commands
+  elif [[ other ]]; then
+      commands
+  else
+      commands
+  fi
+
+  # String tests
+  [[ -z "$str" ]]   # empty
+  [[ -n "$str" ]]   # not empty
+  [[ "$a" == "$b" ]]
+
+  # File tests
+  [[ -f file ]]     # is file
+  [[ -d dir ]]      # is directory
+  [[ -e path ]]     # exists
+  [[ -r file ]]     # readable
+  [[ -x file ]]     # executable
+
+  LOOPS
+  ──────────
+  for item in list; do
+      echo "$item"
+  done
+
+  for ((i=0; i<10; i++)); do
+      echo "$i"
+  done
+
+  while read -r line; do
+      echo "$line"
+  done < file.txt
+
+  FUNCTIONS
+  ──────────
+  function name() {
+      local var="local"
+      echo "$1"  # first arg
+      return 0
+  }
+
+  name "argument"
+  result=$(name "arg")
+
+  SPECIAL VARIABLES
+  ──────────
+  $0  - script name
+  $1  - first argument
+  $@  - all arguments
+  $#  - argument count
+  $?  - last exit status
+  $$  - current PID
+  $!  - last background PID
+
+  COMMAND SUBSTITUTION
+  ──────────
+  result=$(command)
+  result=$(cat file)
+
+  REDIRECTION
+  ──────────
+  cmd > file      # stdout to file
+  cmd >> file     # append
+  cmd 2> file     # stderr to file
+  cmd &> file     # both to file
+  cmd < file      # stdin from file
+  cmd1 | cmd2     # pipe

@@ -1,0 +1,215 @@
+╭─ Bash Reference ─╮
+
+  SHEBANG
+  ──────────
+  #!/bin/bash
+  #!/usr/bin/env bash
+
+  VARIABLES
+  ──────────
+  VAR="value"          # no spaces around =
+  echo "$VAR"          # always quote
+  echo "${VAR}_suffix" # brace expansion
+
+  # Read-only
+  readonly CONST="value"
+  declare -r CONST="value"
+
+  # Local (in functions)
+  local var="value"
+
+  ARRAYS
+  ──────────
+  arr=(one two three)
+  arr[0]="first"
+
+  echo "${arr[0]}"     # first element
+  echo "${arr[@]}"     # all elements
+  echo "${!arr[@]}"    # all indices
+  echo "${#arr[@]}"    # length
+
+  # Associative arrays
+  declare -A map
+  map[key]="value"
+  echo "${map[key]}"
+
+  QUOTING
+  ──────────
+  "double quotes"   # variables expand
+  'single quotes'   # literal string
+  $'escape\nseqs'   # escape sequences
+  `backticks`       # command sub (old)
+  $(command)        # command sub (new)
+
+  PARAMETER EXPANSION
+  ──────────
+  ${var:-default}   # default if unset
+  ${var:=default}   # assign if unset
+  ${var:+alt}       # alt if set
+  ${var:?error}     # error if unset
+  ${#var}           # length
+  ${var%pattern}    # remove suffix
+  ${var#pattern}    # remove prefix
+  ${var//old/new}   # replace all
+
+  CONDITIONS
+  ──────────
+  if [[ condition ]]; then
+      commands
+  elif [[ other ]]; then
+      commands
+  else
+      commands
+  fi
+
+  # String tests
+  [[ -z "$str" ]]      # empty
+  [[ -n "$str" ]]      # not empty
+  [[ "$a" == "$b" ]]   # equal
+  [[ "$a" != "$b" ]]   # not equal
+  [[ "$a" < "$b" ]]    # less than
+  [[ "$a" =~ regex ]]  # regex match
+
+  # Numeric tests
+  [[ $a -eq $b ]]      # equal
+  [[ $a -ne $b ]]      # not equal
+  [[ $a -lt $b ]]      # less than
+  [[ $a -le $b ]]      # less or equal
+  [[ $a -gt $b ]]      # greater than
+  [[ $a -ge $b ]]      # greater or equal
+
+  # File tests
+  [[ -f file ]]        # is regular file
+  [[ -d dir ]]         # is directory
+  [[ -e path ]]        # exists
+  [[ -r file ]]        # readable
+  [[ -w file ]]        # writable
+  [[ -x file ]]        # executable
+  [[ -s file ]]        # not empty
+  [[ -L file ]]        # is symlink
+  [[ file1 -nt file2 ]] # newer than
+
+  # Logical operators
+  [[ cond1 && cond2 ]] # and
+  [[ cond1 || cond2 ]] # or
+  [[ ! condition ]]    # not
+
+  LOOPS
+  ──────────
+  for item in list; do
+      echo "$item"
+  done
+
+  for file in *.txt; do
+      echo "$file"
+  done
+
+  for ((i=0; i<10; i++)); do
+      echo "$i"
+  done
+
+  while [[ condition ]]; do
+      commands
+  done
+
+  while read -r line; do
+      echo "$line"
+  done < file.txt
+
+  until [[ condition ]]; do
+      commands
+  done
+
+  FUNCTIONS
+  ──────────
+  function name() {
+      local var="local"
+      echo "$1"  # first arg
+      echo "$@"  # all args
+      return 0
+  }
+
+  # Short form
+  name() {
+      commands
+  }
+
+  result=$(name "arg")
+
+  SPECIAL VARIABLES
+  ──────────
+  $0        - script name
+  $1-$9     - positional args
+  ${10}     - 10th+ argument
+  $@        - all args (separate)
+  $*        - all args (single)
+  $#        - argument count
+  $?        - last exit status
+  $$        - current PID
+  $!        - last background PID
+  $-        - current options
+  $_        - last argument
+
+  ARITHMETIC
+  ──────────
+  $((a + b))
+  $((a * b))
+  $((a / b))
+  $((a % b))
+  $((a ** b))    # power
+  ((a++))
+  ((a--))
+
+  let "a = b + c"
+  declare -i num=5
+
+  REDIRECTION
+  ──────────
+  cmd > file       # stdout to file
+  cmd >> file      # append stdout
+  cmd 2> file      # stderr to file
+  cmd 2>> file     # append stderr
+  cmd &> file      # both to file
+  cmd &>> file     # append both
+  cmd < file       # stdin from file
+  cmd1 | cmd2      # pipe
+  cmd1 |& cmd2     # pipe both
+
+  # Here document
+  cmd << EOF
+  multiple
+  lines
+  EOF
+
+  # Here string
+  cmd <<< "string"
+
+  PROCESS SUBSTITUTION
+  ──────────
+  diff <(cmd1) <(cmd2)
+  cmd > >(process)
+
+  ERROR HANDLING
+  ──────────
+  set -e           # exit on error
+  set -u           # error on unset
+  set -o pipefail  # pipe errors
+  set -x           # debug mode
+
+  trap 'cleanup' EXIT
+  trap 'handler' ERR
+
+  COMMON PATTERNS
+  ──────────
+  # Safe script header
+  set -euo pipefail
+
+  # Check if command exists
+  command -v cmd &>/dev/null
+
+  # Default values
+  : "${VAR:=default}"
+
+  # Temporary files
+  tmp=$(mktemp)
+  trap "rm -f $tmp" EXIT

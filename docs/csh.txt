@@ -1,0 +1,144 @@
+╭─ C Shell Reference ─╮
+
+  SHEBANG
+  ──────────
+  #!/bin/csh
+  #!/bin/tcsh
+
+  VARIABLES
+  ──────────
+  set var = "value"
+  set var = 10
+  echo $var
+
+  # Environment variables
+  setenv VAR "value"
+  echo $VAR
+
+  # Arrays
+  set arr = (one two three)
+  echo $arr[1]      # first element (1-indexed)
+  echo $arr         # all elements
+  echo $#arr        # length
+
+  ALIASES
+  ──────────
+  alias ll 'ls -la'
+  alias grep 'grep --color=auto'
+  unalias ll
+
+  CONDITIONS
+  ──────────
+  if ( condition ) then
+      commands
+  else if ( other ) then
+      commands
+  else
+      commands
+  endif
+
+  # String comparison
+  if ( "$var" == "value" ) then
+  if ( "$var" != "value" ) then
+
+  # Numeric comparison
+  if ( $num > 10 ) then
+  if ( $num <= 5 ) then
+
+  # File tests
+  if ( -f file ) then    # is file
+  if ( -d dir ) then     # is directory
+  if ( -e path ) then    # exists
+  if ( -r file ) then    # readable
+  if ( -x file ) then    # executable
+
+  LOOPS
+  ──────────
+  foreach item ( list )
+      echo $item
+  end
+
+  foreach file ( *.txt )
+      echo $file
+  end
+
+  while ( condition )
+      commands
+  end
+
+  # Break and continue
+  break
+  continue
+
+  SWITCH STATEMENT
+  ──────────
+  switch ( $var )
+      case "value1":
+          commands
+          breaksw
+      case "value2":
+          commands
+          breaksw
+      default:
+          commands
+          breaksw
+  endsw
+
+  COMMAND SUBSTITUTION
+  ──────────
+  set result = `command`
+  set files = `ls *.txt`
+
+  SPECIAL VARIABLES
+  ──────────
+  $0       - script name
+  $1-$9    - arguments
+  $argv    - all arguments (array)
+  $#argv   - argument count
+  $status  - last exit status
+  $$       - current PID
+  $?var    - 1 if var is set, 0 otherwise
+
+  HISTORY
+  ──────────
+  !!       - last command
+  !n       - command number n
+  !-n      - n commands back
+  !string  - last cmd starting with string
+  !$       - last argument of previous cmd
+
+  INPUT/OUTPUT
+  ──────────
+  # Read input
+  set var = $<
+
+  # Redirection
+  cmd > file       # stdout to file
+  cmd >> file      # append
+  cmd >& file      # stdout+stderr to file
+  cmd < file       # stdin from file
+  cmd |& cmd2      # pipe stdout+stderr
+
+  ARITHMETIC
+  ──────────
+  @ result = 5 + 3
+  @ result++
+  @ result--
+  @ result = $a * $b
+
+  JOB CONTROL
+  ──────────
+  command &        # run in background
+  jobs             # list jobs
+  fg %1            # foreground job 1
+  bg %1            # background job 1
+  kill %1          # kill job 1
+
+  DIFFERENCES FROM BASH
+  ──────────
+  - Uses 'set' instead of '='
+  - Uses 'setenv' for env vars
+  - Arrays are 1-indexed
+  - Uses 'foreach/end' not 'for/done'
+  - Uses 'if/endif' not 'if/fi'
+  - Uses '@' for arithmetic
