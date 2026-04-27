@@ -54,6 +54,10 @@ docs notes/setup
 docs go.txt        # extension is optional
 ```
 
+Example output for `docs bash`:
+
+![docs bash screenshot](images/screenshot1.png)
+
 ### `docs -e <topic>`
 
 Opens the same file **editable** — useful when you want to update your notes on the fly.
@@ -69,6 +73,9 @@ Lists all `.txt` files currently installed in `~/microDocs/` in a read-only side
 ```
 docs -list
 ```
+Example output for `docs bash`:
+
+![docs bash screenshot](images/screenshot3.png)
 
 ### `man <command>`
 
@@ -76,9 +83,13 @@ Renders the system man page for any command in a read-only right-side pane.
 
 ```
 man ls
-man git
+man test
 man 3 printf
 ```
+
+Example output for `man test`:
+
+![man test screenshot](images/screenshot2.png)
 
 ## Pane behaviour
 
